@@ -1,0 +1,1222 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harrington &amp; Co</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Marcellus&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#0A0E13;
+  --ink-2:#10161D;
+  --ink-3:#18212B;
+  --gold:#C9A56F;
+  --gold-soft:#E3CBA0;
+  --ivory:#F1E9DA;
+  --mist:#9A988F;
+  --line:rgba(201,165,111,.28);
+  --lagoon:#3F8FA6;
+  --display:"Marcellus","Cinzel","Trajan Pro",Georgia,serif;
+  --serif:"Cormorant Garamond","Cormorant",Garamond,Georgia,serif;
+  --sans:"Jost","Futura","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --gutter:clamp(16px,4vw,56px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+.lb[hidden]{display:none!important}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{margin:0;background:var(--ink);color:var(--ivory);font:300 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold);color:var(--ink)}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+
+/* ---------- type ---------- */
+.eyebrow{font:500 11px/1.4 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.h-xl{font:400 clamp(40px,7.4vw,108px)/1 var(--display);letter-spacing:.06em;text-transform:uppercase;text-wrap:balance;margin:0}
+.h-lg{font:400 clamp(30px,4.4vw,60px)/1.08 var(--display);letter-spacing:.05em;text-transform:uppercase;text-wrap:balance;margin:0}
+.h-md{font:400 clamp(22px,2.4vw,32px)/1.15 var(--display);letter-spacing:.06em;text-transform:uppercase;text-wrap:balance;margin:0}
+.script{font:italic 400 clamp(22px,2.4vw,32px)/1.3 var(--serif);color:var(--gold-soft)}
+.lead{font:400 clamp(19px,1.7vw,23px)/1.55 var(--serif);color:var(--ivory);max-width:34em}
+p{margin:0;max-width:62ch;color:rgba(241,233,218,.78)}
+.rule{width:64px;height:1px;background:var(--gold);border:0;margin:0}
+
+/* ---------- intro curtain ---------- */
+.curtain.gone{display:none}
+.curtain{position:fixed;inset:0;z-index:100;background:var(--ink);display:grid;place-items:center;animation:lift 1.1s var(--ease) 1.5s forwards}
+.curtain svg{width:92px;opacity:0;animation:mono 1.4s var(--ease) .1s forwards}
+.curtain .bar{position:absolute;bottom:18%;left:50%;width:160px;height:1px;margin-left:-80px;background:var(--line);overflow:hidden}
+.curtain .bar::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;animation:fill 1.3s var(--ease) .2s forwards}
+@keyframes mono{from{opacity:0;transform:translateY(10px) scale(.94);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes fill{to{transform:scaleX(1)}}
+@keyframes lift{to{transform:translateY(-100%);visibility:hidden}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(env(safe-area-inset-top,0px) + 18px) var(--gutter) 18px;display:flex;align-items:center;justify-content:space-between;gap:24px;transition:background .5s,padding .5s,border-color .5s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(10,14,19,.82);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px);padding-top:calc(env(safe-area-inset-top,0px) + 12px);padding-bottom:12px;border-color:var(--line)}
+.brand{display:flex;align-items:center;gap:14px}
+.brand svg{width:34px;flex:none}
+.brand b{font:400 15px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.brand small{display:block;font:400 8.5px/1 var(--sans);letter-spacing:.42em;color:var(--gold);margin-top:6px;text-transform:uppercase}
+.links{display:flex;gap:clamp(14px,2vw,30px);font:400 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase}
+.links a{white-space:nowrap;position:relative;padding:6px 0;color:rgba(241,233,218,.8);transition:color .3s}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transition:transform .4s var(--ease)}
+.links a:hover{color:var(--ivory)}.links a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:12px;font:500 11px/1 var(--sans);letter-spacing:.28em;text-transform:uppercase;padding:15px 24px;border:1px solid var(--gold);color:var(--ivory);background:transparent;cursor:pointer;transition:background .4s,color .4s}
+.btn:hover{background:var(--gold);color:var(--ink)}
+.btn.fill{background:var(--gold);color:var(--ink)}
+.btn.fill:hover{background:var(--gold-soft)}
+.burger{display:none;background:none;border:0;color:var(--ivory);padding:8px;cursor:pointer}
+.burger span{display:block;width:24px;height:1px;background:currentColor;margin:6px 0;transition:transform .4s var(--ease)}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.progress{position:fixed;top:0;left:0;height:1px;background:var(--gold);z-index:60;width:0}
+
+/* mobile menu */
+.menu{position:fixed;inset:0;z-index:45;background:var(--ink);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:80px var(--gutter) 40px;transform:translateY(-100%);transition:transform .7s var(--ease)}
+.menu.open{transform:none}
+.menu a{font:400 clamp(26px,7vw,40px)/1.3 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.menu a em{font:italic 400 16px var(--serif);color:var(--gold);margin-right:14px;letter-spacing:0}
+
+/* ---------- hero ---------- */
+.hero{position:relative;height:max(min(100svh,1000px),58vw);min-height:680px;max-height:1100px;overflow:hidden;display:flex;align-items:flex-end}
+.hero .bg{position:absolute;inset:clamp(0px,4vw,56px) 0 -6%;background:url(img/header.jpg) center top/cover;transform-origin:50% 0%;animation:kb 18s ease-out 1.6s both}
+@keyframes kb{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,var(--ink) 0%,rgba(10,14,19,0) 14%,rgba(10,14,19,0) 42%,rgba(10,14,19,.55) 62%,rgba(10,14,19,.92) 86%,var(--ink) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding:0 var(--gutter) clamp(32px,5vh,64px);display:grid;gap:22px}
+.hero-title{font-size:clamp(30px,4.6vw,76px);text-shadow:0 2px 30px rgba(10,14,19,.6)}
+.hero .stars{letter-spacing:.5em;color:var(--gold);font-size:12px}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(105%);animation:rise 1.2s var(--ease) forwards}
+.hero h1 .line:nth-child(2) span{animation-delay:.12s}
+.hero .reveal-late{animation:fadeup 1.1s var(--ease) both}
+@keyframes rise{to{transform:none}}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero h1 .line span,.hero .reveal-late{animation-delay:calc(1.9s + var(--d,0s))}
+.hero-row{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px}
+.hero-row .script{max-width:22ch}
+.scroll-cue{display:flex;align-items:center;gap:14px;font:400 10px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--mist)}
+.scroll-cue i{display:block;width:1px;height:48px;background:linear-gradient(var(--gold),transparent);animation:drip 2.4s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- figures band ---------- */
+.band{border-block:1px solid var(--line);padding:0 var(--gutter);background:var(--ink)}
+.figures{display:grid;grid-template-columns:repeat(5,1fr);max-width:1400px;margin:0 auto}
+.fig{padding:30px 18px;text-align:center;border-left:1px solid var(--line)}
+.fig:first-child{border-left:0}
+.fig strong{display:block;font:400 clamp(30px,3.4vw,46px)/1 var(--display);color:var(--ivory);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.fig span{display:block;margin-top:10px;font:400 10.5px/1.4 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+
+/* ---------- sections ---------- */
+section{position:relative}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:var(--gutter)}
+.pad{padding-block:clamp(80px,12vw,170px)}
+.head{display:grid;gap:22px;margin-bottom:clamp(40px,6vw,80px)}
+.head.center{text-align:center;justify-items:center}
+.head.center p{text-align:center}
+.idx{font:italic 400 18px var(--serif);color:var(--gold)}
+
+.rv{transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.js .rv:not(.in){opacity:.25;transform:translateY(28px)}
+.img-rv{overflow:hidden}
+.img-rv img{transition:transform 1.8s var(--ease)}
+.js .img-rv:not(.in) img{transform:scale(1.12)}
+
+/* domaine */
+.domaine{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,100px);align-items:center}
+.domaine .copy{display:grid;gap:26px}
+.domaine .visual{position:relative}
+.domaine .visual .main{aspect-ratio:4/3.1;width:100%;object-fit:cover}
+.domaine .visual .inset{position:absolute;left:-12%;bottom:-14%;width:42%;aspect-ratio:1;object-fit:cover;border:8px solid var(--ink)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:10px}
+.pillars div{background:var(--ink);padding:18px 16px}
+.pillars b{display:block;font:400 13px/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.pillars small{display:block;margin-top:8px;font-size:13px;color:var(--mist);line-height:1.5}
+
+/* hôtel bento */
+.hotel{background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 20%,var(--ink-2) 80%,var(--ink) 100%)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:clamp(150px,17vw,250px);gap:10px}
+.tile{position:relative;overflow:hidden;background:var(--ink-3)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease),filter .8s}
+.tile:hover img{transform:scale(1.06)}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 18px;background:linear-gradient(transparent,rgba(10,14,19,.9));display:grid;gap:4px}
+.tile figcaption b{font:400 14px/1.2 var(--display);letter-spacing:.18em;text-transform:uppercase}
+.tile figcaption small{font:italic 400 16px/1.3 var(--serif);color:var(--gold-soft)}
+figure{margin:0}
+.t1{grid-column:span 8;grid-row:span 2}.t2{grid-column:span 4;grid-row:span 2}
+.t3,.t4,.t5,.t6{grid-column:span 3}
+.t7{grid-column:span 5;grid-row:span 2}.t8{grid-column:span 4;grid-row:span 2}.t9{grid-column:span 3}.t10{grid-column:span 3}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));border-top:1px solid var(--line);margin-top:clamp(40px,5vw,70px)}
+.specs div{padding:22px 16px 0 0}
+.specs b{display:block;font:400 22px/1.1 var(--display);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.specs span{display:block;margin-top:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+
+/* coupe verticale */
+.coupe{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:center;margin-top:clamp(60px,8vw,110px)}
+.levels{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.levels li{display:grid;grid-template-columns:1fr auto;gap:18px;padding:13px 0 13px 24px;position:relative;cursor:default;transition:background .3s}
+.levels li::before{content:"";position:absolute;left:-4px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--ink);border:1px solid var(--gold);transition:background .3s}
+.levels li:hover,.levels li.on{background:linear-gradient(90deg,rgba(201,165,111,.12),transparent)}
+.levels li:hover::before,.levels li.on::before{background:var(--gold)}
+.levels b{font:400 13px/1.3 var(--display);letter-spacing:.16em;text-transform:uppercase}
+.levels span{font:italic 400 17px/1.3 var(--serif);color:var(--gold-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+.building{width:100%;height:auto}
+
+/* villas */
+.villas{overflow:hidden}
+.v-tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line);margin-bottom:40px}
+.v-tab{background:none;border:0;color:var(--mist);cursor:pointer;padding:18px 28px 18px 0;margin-right:28px;font:400 clamp(20px,2.4vw,30px)/1 var(--display);letter-spacing:.12em;text-transform:uppercase;position:relative;transition:color .4s}
+.v-tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.v-tab[aria-selected="true"]{color:var(--ivory)}
+.v-tab[aria-selected="true"]::after{transform:scaleX(1)}
+.v-tab small{display:block;font:italic 400 15px/1 var(--serif);letter-spacing:0;text-transform:none;color:var(--gold);margin-top:8px}
+.v-stage{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,64px);align-items:start}
+.v-photo{position:relative;aspect-ratio:505/260;overflow:hidden;background:var(--ink-3)}
+.v-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1s var(--ease),transform 2.2s var(--ease)}
+.v-photo img.on{opacity:1;transform:none}
+.v-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.v-thumbs button{padding:0;border:0;background:var(--ink-3);cursor:zoom-in;aspect-ratio:3/2;overflow:hidden}
+.v-thumbs img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),opacity .4s}
+.v-thumbs button:hover img{transform:scale(1.08)}
+.v-info{display:grid;gap:24px}
+.v-info .kicker{font:400 11px/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.v-data{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.v-data div{padding:16px 0;border-bottom:1px solid var(--line)}
+.v-data div:nth-child(odd){padding-right:16px}
+.v-data span{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+.v-data b{display:block;margin-top:6px;font:400 24px/1.1 var(--display);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.v-data b sup{font-size:.55em}
+.v-data b small{font:italic 400 15px var(--serif);color:var(--gold-soft);letter-spacing:0}
+.fade-swap{transition:opacity .5s}
+.fade-swap.out{opacity:0}
+
+/* experiences (alternating) */
+.exp{display:grid;grid-template-columns:1fr 1fr;min-height:560px;border-top:1px solid var(--line)}
+.exp:last-child{border-bottom:1px solid var(--line)}
+.exp .ph{position:relative;overflow:hidden;min-height:380px}
+.exp .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.exp .ph .chip{position:absolute;right:20px;bottom:20px;width:34%;aspect-ratio:1;object-fit:cover;border:6px solid var(--ink);inset:auto 20px 20px auto;height:auto}
+.exp .tx{padding:clamp(40px,6vw,90px) clamp(24px,5vw,80px);display:grid;align-content:center;gap:22px}
+.exp.flip .ph{order:2}
+.exp ul{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.exp li{font-size:14px;color:rgba(241,233,218,.8);padding-left:22px;position:relative;line-height:1.45}
+.exp li::before{content:"";position:absolute;left:0;top:.62em;width:12px;height:1px;background:var(--gold)}
+.exp .h-lg{font-size:clamp(26px,3vw,44px)}
+.big-num{font:400 clamp(56px,7vw,96px)/.9 var(--display);color:var(--gold);letter-spacing:.02em}
+.big-num small{font-size:.35em;letter-spacing:.1em;vertical-align:super}
+
+/* sport & famille twin */
+.twin{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.card{position:relative;overflow:hidden;min-height:clamp(520px,58vw,720px);display:flex;align-items:flex-end;isolation:isolate}
+.card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 2s var(--ease)}
+.card:hover>img{transform:scale(1.05)}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,14,19,.05) 0%,rgba(10,14,19,.55) 32%,rgba(10,14,19,.92) 58%,rgba(10,14,19,.97) 100%)}
+.card .in{padding:clamp(24px,3.4vw,48px);display:grid;gap:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{font:400 10.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:9px 12px;border:1px solid var(--line);background:rgba(10,14,19,.4);backdrop-filter:blur(6px)}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.strip img{aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* côté mer */
+.mer{background:linear-gradient(180deg,var(--ink) 0%,#0C141B 30%,#0C141B 70%,var(--ink) 100%)}
+.shore{position:relative;overflow:hidden;min-height:clamp(460px,52vw,680px);display:flex;align-items:flex-end;isolation:isolate;margin-bottom:clamp(16px,2vw,28px)}
+.shore>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.shore::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,14,19,.92) 0%,rgba(10,14,19,.6) 38%,rgba(10,14,19,0) 70%),linear-gradient(0deg,rgba(10,14,19,.7),transparent 45%)}
+.shore .in{padding:clamp(28px,4vw,64px);display:grid;gap:20px;max-width:620px}
+.shore .polaroids{position:absolute;right:clamp(20px,3vw,48px);top:clamp(20px,3vw,48px);display:grid;gap:10px;width:clamp(120px,16vw,220px)}
+.shore .polaroids img{width:100%;aspect-ratio:3/2;object-fit:cover;border:5px solid var(--ink);transition:transform .8s var(--ease)}
+.shore .polaroids img:first-child{transform:rotate(-2deg)}.shore .polaroids img:last-child{transform:rotate(1.5deg)}
+.shore:hover .polaroids img{transform:none}
+.plan-tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.plan-tabs button{background:none;border:1px solid var(--line);color:var(--mist);padding:11px 18px;font:400 10.5px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:all .3s}
+.plan-tabs button[aria-pressed="true"]{border-color:var(--gold);color:var(--ivory);background:rgba(201,165,111,.1)}
+.plan-scroll img{transition:opacity .5s}
+@media (max-width:860px){.shore .polaroids{display:none}}
+
+/* golf trio */
+.trio{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(12px,1.6vw,22px)}
+.trio .card{min-height:clamp(480px,46vw,640px)}
+.golf-stats{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);margin-top:clamp(30px,4vw,56px)}
+.golf-stats div{padding:22px 16px;border-left:1px solid var(--line)}
+.golf-stats div:first-child{border-left:0;padding-left:0}
+.golf-stats b{display:block;font:400 clamp(22px,2.4vw,32px)/1 var(--display);color:var(--ivory)}
+.golf-stats span{display:block;margin-top:8px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+/* enfance */
+.kids-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.kids-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+@media (max-width:980px){.trio{grid-template-columns:1fr}.golf-stats{grid-template-columns:1fr 1fr}.golf-stats div:nth-child(3){border-left:0;padding-left:0}.golf-stats div:nth-child(n+3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.kids-grid{grid-template-columns:1fr 1fr}}
+
+/* quick booking bar */
+.qb{display:grid;grid-template-columns:1fr 1fr 1fr auto;border:1px solid var(--line);background:rgba(10,14,19,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);max-width:980px}
+.qb .field{background:transparent;border-left:1px solid var(--line)}
+.qb .field:first-child{border-left:0}
+.qb .field input,.qb .field select{font-size:18px}
+.qb .btn{border:0;padding-inline:30px}
+@media (max-width:700px){.qb{grid-template-columns:1fr 1fr}.qb .field:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}.qb .btn{grid-column:1/-1;justify-content:center;padding:18px}}
+
+/* active nav + floating book button */
+.links a.active{color:var(--ivory)}
+.links a.active::after{transform:scaleX(1)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;box-shadow:0 12px 30px rgba(0,0,0,.45);transform:translateY(140%);transition:transform .6s var(--ease),background .4s,color .4s}
+.fab.show{transform:none}
+@media (min-width:1381px){.fab{display:none}}
+
+/* interactive masterplan */
+.plan-stage{position:relative;min-width:900px}
+.plan-stage img{width:100%;height:auto;display:block}
+.hs{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:0;padding:0;cursor:pointer;background:transparent;z-index:2}
+.hs::before{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px rgba(10,14,19,.8)}
+.hs::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--gold-soft);animation:ping 2.4s ease-out infinite}
+.hs:hover::before,.hs:focus-visible::before,.hs.on::before{background:var(--ivory)}
+@keyframes ping{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.hs[hidden]{display:none}
+.pop{position:fixed;z-index:70;width:260px;background:var(--ink-2);border:1px solid var(--line);box-shadow:0 24px 60px rgba(0,0,0,.55);pointer-events:auto}
+.pop img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.pop div{padding:14px 16px 16px;display:grid;gap:6px}
+.pop b{font:400 15px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase}
+.pop small{font:italic 400 16px/1.3 var(--serif);color:var(--gold-soft)}
+.pop a{margin-top:6px;font:500 10.5px/1 var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.pop a:hover{color:var(--ivory)}
+
+/* gallery */
+.zoomable{cursor:zoom-in}
+.lb{grid-template-rows:1fr auto;gap:14px}
+.lb figure{margin:0;display:grid;place-items:center;min-height:0}
+.lb img{max-height:78vh}
+.lb p{position:static}
+.lb .lb-btn{position:absolute;top:50%;margin-top:-28px;width:56px;height:56px;border:1px solid var(--line);background:rgba(10,14,19,.6);color:var(--ivory);font:300 26px/1 var(--sans);cursor:pointer;transition:background .3s,border-color .3s}
+.lb .lb-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.lb .prev{left:clamp(8px,2vw,28px)}.lb .next{right:clamp(8px,2vw,28px)}
+.lb .close{top:calc(18px + env(safe-area-inset-top,0px));right:clamp(8px,2vw,28px);margin:0;width:46px;height:46px;font-size:22px}
+.lb .count{font:400 11px/1 var(--sans);letter-spacing:.3em;color:var(--mist);text-align:center}
+
+/* résidences (light chapter) */
+.res{background:var(--ivory);color:var(--ink)}
+.res p{color:rgba(10,14,19,.74)}
+.res .idx,.res .eyebrow{color:#8E6C3A}
+.res .script{color:#8E6C3A}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px)}
+.res-col{display:grid;gap:18px;align-content:start}
+.res-col .main{width:100%;aspect-ratio:4/3;object-fit:cover}
+.res-col .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.res-col .pair img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.res-col ul{list-style:none;margin:0;padding:0;border-top:1px solid rgba(10,14,19,.14)}
+.res-col li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(10,14,19,.14);font-size:14px;color:rgba(10,14,19,.8)}
+.res-col li span{font:italic 400 16px var(--serif);color:#8E6C3A}
+.res-col .num{font:italic 400 18px var(--serif);color:#8E6C3A}
+@media (max-width:980px){.res-grid{grid-template-columns:1fr;max-width:620px}}
+
+/* tenues signature */
+.uni{background:linear-gradient(180deg,var(--ink),#16100C 45%,#16100C 60%,var(--ink))}
+.uni-grid{display:grid;grid-template-columns:1fr 1.05fr 1fr;gap:clamp(12px,1.6vw,22px);align-items:start}
+.uni-grid figure{display:grid;gap:14px}
+.uni-grid img{width:100%;aspect-ratio:3/5;object-fit:cover}
+.uni-grid figcaption{display:grid;gap:4px}
+.uni-grid figcaption b{font:400 14px/1.2 var(--display);letter-spacing:.18em;text-transform:uppercase}
+.uni-grid figcaption small{font:italic 400 17px/1.35 var(--serif);color:var(--gold-soft)}
+.uni-details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(28px,4vw,48px)}
+.uni-details img{width:100%;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:760px){.uni-grid{grid-template-columns:1fr 1fr}.uni-grid figure:nth-child(2){grid-column:1/-1;order:3}.uni-grid figure:nth-child(2) img{aspect-ratio:4/3}}
+
+/* masterplan */
+.plan-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);position:relative}
+.plan-scroll img{width:100%;min-width:900px;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font:400 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+.legend button{background:none;border:0;padding:4px 0;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;transition:color .3s}
+.legend button:hover{color:var(--ivory)}
+.legend button::before{content:"◆";color:var(--gold);margin-right:10px;font-size:8px;vertical-align:2px}
+.hint{display:none;font:italic 400 15px var(--serif);color:var(--gold-soft);margin-top:12px}
+
+/* quote */
+.quote{position:relative;overflow:hidden;text-align:center;padding-block:clamp(120px,16vw,220px)}
+.quote .bg{position:absolute;inset:-20% 0;background:url(img/hero.jpg) center/cover;will-change:transform}
+.quote::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse at center,rgba(10,14,19,.55),rgba(10,14,19,.9))}
+.quote .in{position:relative;z-index:2;display:grid;gap:26px;justify-items:center}
+.quote blockquote{margin:0;font:italic 400 clamp(34px,5.6vw,80px)/1.1 var(--serif);max-width:16ch;text-wrap:balance}
+
+/* masterplan views */
+const planImg=document.getElementById('planImg');
+document.querySelectorAll('.plan-tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.plan-tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  planImg.style.opacity=0;closePop();setTimeout(()=>{planImg.src=b.dataset.src;drawSpots(b.dataset.src);planImg.onload=()=>planImg.style.opacity=1},reduce?0:250);
+}));
+
+/* booking */
+.booking{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,6vw,100px);align-items:start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.field{background:var(--ink);padding:16px 18px;display:grid;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font:400 10px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.field input,.field select,.field textarea{background:transparent;border:0;color:var(--ivory);font:400 20px/1.3 var(--serif);padding:4px 0;width:100%;outline:none;color-scheme:dark}
+.field textarea{resize:vertical;min-height:70px;font-size:18px}
+.field select option{background:var(--ink-2);color:var(--ivory)}
+.field:focus-within{background:var(--ink-2)}
+.form .actions{grid-column:1/-1;background:var(--ink);padding:18px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.est{font:italic 400 18px var(--serif);color:var(--gold-soft)}
+.confirm{grid-column:1/-1;background:var(--ink-2);padding:26px 18px;display:grid;gap:10px}
+.confirm h3{margin:0;font:400 18px/1.2 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.contact-list{display:grid;gap:18px;margin-top:10px}
+.contact-list div{display:grid;gap:4px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.contact-list span{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mist)}
+.contact-list b{font:400 20px/1.3 var(--serif);user-select:all}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:clamp(50px,7vw,90px) var(--gutter) calc(40px + env(safe-area-inset-bottom,0px))}
+.foot{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px}
+.foot h4{margin:0 0 16px;font:500 10.5px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.foot a,.foot li{display:block;font-size:14px;color:rgba(241,233,218,.72);padding:4px 0;transition:color .3s}
+.foot a:hover{color:var(--ivory)}
+.foot ul{list-style:none;margin:0;padding:0}
+.baseline{max-width:1400px;margin:60px auto 0;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mist)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(6,9,12,.94);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lb img{max-height:86vh;width:auto;max-width:min(1200px,100%);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb p{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;max-width:none;font:italic 400 18px var(--serif);color:var(--gold-soft)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){
+  .links{display:none}.burger{display:block}
+  .nav .btn{display:none}
+}
+@media (max-width:1100px){
+  .figures{grid-template-columns:repeat(3,1fr)}
+  .fig:nth-child(4){border-left:0}
+  .fig:nth-child(n+4){border-top:1px solid var(--line)}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .domaine,.coupe,.v-stage,.booking,.twin{grid-template-columns:1fr}
+  .domaine .visual{margin:0 0 50px 10%}
+  .exp{grid-template-columns:1fr}
+  .exp.flip .ph{order:0}
+  .bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:160px}
+  .t1{grid-column:span 6;grid-row:span 2}.t2{grid-column:span 3;grid-row:span 2}
+  .t3,.t4,.t5,.t6{grid-column:span 3}
+  .t7{grid-column:span 6;grid-row:span 2}.t8{grid-column:span 3;grid-row:span 2}.t9,.t10{grid-column:span 3}
+  .hint{display:block}
+}
+@media (max-width:560px){
+  .figures{grid-template-columns:1fr 1fr}
+  .fig{border-left:0;border-top:1px solid var(--line)}
+  .fig:nth-child(-n+2){border-top:0}
+  .fig:nth-child(even){border-left:1px solid var(--line)}
+  .fig:last-child{grid-column:1/-1}
+  .brand b{font-size:13px;letter-spacing:.16em}
+  .pillars{grid-template-columns:1fr}
+  .exp ul{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .t2,.t8{grid-column:span 6}
+  .v-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .v-tab{padding-right:0;margin-right:18px;font-size:18px;flex:none}
+  .v-tab small{font-size:13px}
+}
+@media (max-width:700px){
+  .hero{height:auto;min-height:760px;max-height:none}
+  .hero .bg{inset:44px 0 0;background-size:auto 64%;background-position:center top;background-repeat:no-repeat}
+  .hero::before{background:linear-gradient(180deg,var(--ink) 0%,rgba(10,14,19,0) 12%,rgba(10,14,19,0) 34%,rgba(10,14,19,.75) 58%,var(--ink) 72%)}
+  .hero-title{font-size:clamp(26px,7.4vw,34px)}
+  .hero-row .script{font-size:19px;max-width:none}
+  .hero .scroll-cue{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}
+  .js .rv:not(.in){opacity:1;transform:none}
+  .js .img-rv:not(.in) img{transform:none}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hc" viewBox="0 0 100 120">
+      <text x="22" y="72" font-family="Marcellus, Georgia, serif" font-size="78" fill="currentColor">H</text>
+      <text x="40" y="104" font-family="Marcellus, Georgia, serif" font-size="78" fill="currentColor">C</text>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="curtain" aria-hidden="true">
+  <svg viewBox="0 0 100 120" style="color:var(--gold)"><use href="#hc"/></svg>
+  <div class="bar"></div>
+</div>
+
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Harrington &amp; Co, retour en haut">
+    <svg viewBox="0 0 100 120" style="color:var(--gold)"><use href="#hc"/></svg>
+    <span><b>Harrington &amp; Co</b><small>Private Resort &amp; Hotel</small></span>
+  </a>
+  <nav class="links" aria-label="Navigation principale">
+    <a href="#hotel">L'hôtel</a>
+    <a href="#villas">Villas</a>
+    <a href="#saveurs">Saveurs &amp; Spa</a>
+    <a href="#golf">Golf</a>
+    <a href="#loisirs">Loisirs</a>
+    <a href="#enfance">Enfants</a>
+    <a href="#mer">Côté mer</a>
+    <a href="#residences">Résidences</a>
+    <a href="#masterplan">Masterplan</a>
+  </nav>
+  <a class="btn" href="#reserver">Réserver</a>
+  <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu">
+  <a href="#domaine"><em>i.</em>Le domaine</a>
+  <a href="#hotel"><em>ii.</em>L'hôtel</a>
+  <a href="#villas"><em>iii.</em>Villas privées</a>
+  <a href="#saveurs"><em>iv.</em>Saveurs &amp; Spa</a>
+  <a href="#golf"><em>v.</em>Golf</a>
+  <a href="#loisirs"><em>vi.</em>Padel &amp; Ferme</a>
+  <a href="#enfance"><em>vii.</em>Enfants</a>
+  <a href="#mer"><em>viii.</em>Côté mer</a>
+  <a href="#residences"><em>ix.</em>Résidences</a>
+  <a href="#tenues"><em>x.</em>Tenues signature</a>
+  <a href="#masterplan"><em>xi.</em>Masterplan</a>
+  <a href="#reserver"><em>xii.</em>Réserver</a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bg" id="heroBg" role="img" aria-label="Entrée monumentale de l'hôtel Harrington &amp; Co illuminée à la nuit tombée, avec son logo et son miroir d'eau"></div>
+  <div class="hero-in">
+    <h1 class="h-xl hero-title"><span class="line"><span>Plus qu'un séjour,</span></span><span class="line"><span>une expérience privée</span></span></h1>
+    <div class="hero-row">
+      <p class="script reveal-late" style="--d:.35s">Nature. Luxe. Exclusivité. Une destination, mille émotions.</p>
+      <a class="scroll-cue reveal-late" style="--d:.5s" href="#domaine"><i></i>Découvrir</a>
+    </div>
+    <form class="qb reveal-late" id="qb" style="--d:.65s" aria-label="Réservation rapide">
+      <div class="field"><label for="qb-in">Arrivée</label><input id="qb-in" type="date"></div>
+      <div class="field"><label for="qb-out">Départ</label><input id="qb-out" type="date"></div>
+      <div class="field"><label for="qb-guests">Adultes</label><select id="qb-guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+      <button class="btn fill" type="submit">Préparer mon séjour</button>
+    </form>
+  </div>
+</section>
+
+<div class="band">
+  <div class="figures">
+    <div class="fig"><strong data-count="180">180</strong><span>Hectares</span></div>
+    <div class="fig"><strong data-count="57">57</strong><span>Chambres &amp; suites</span></div>
+    <div class="fig"><strong data-count="3">3</strong><span>Villas privées</span></div>
+    <div class="fig"><strong data-count="18">18</strong><span>Trous de golf</span></div>
+    <div class="fig"><strong data-count="1500" data-fmt="space">1 500</strong><span>m² de spa</span></div>
+  </div>
+</div>
+
+<!-- DOMAINE -->
+<section id="domaine" class="pad">
+  <div class="wrap domaine">
+    <div class="copy rv">
+      <span class="idx">i. Le domaine</span>
+      <h2 class="h-lg">Entre golf, lagons et océan</h2>
+      <hr class="rule">
+      <p class="lead">Sur 180 hectares face à l'océan, Harrington &amp; Co réunit un hôtel cinq étoiles, trois villas privées, un golf 18 trous et une plage privée.</p>
+      <p>Tout converge vers le grand miroir d'eau central : les suites, le restaurant signature, le spa. Les villas se tiennent à l'écart, dans leurs jardins. Plus loin, les terrains de padel, le parc pédagogique et l'héliport complètent le domaine.</p>
+      <div class="pillars">
+        <div><b>Luxury</b><small>Service hôtelier cinq étoiles, 24h/24</small></div>
+        <div><b>Privacy</b><small>Villas avec piscine et jardin privés</small></div>
+        <div><b>Exclusivity</b><small>Plage privée et transferts héliportés</small></div>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="img-rv rv"><img class="main" src="img/aerial.jpg" alt="Vue aérienne du miroir d'eau central bordé de palmiers et de pavillons illuminés" loading="lazy"></div>
+      <img class="inset" src="img/aerial-wide.jpg" alt="Allée centrale du resort vue du ciel, du porche d'entrée jusqu'à l'hôtel" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- HOTEL -->
+<section id="hotel" class="hotel pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">ii. L'hôtel</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">L'élégance d'un lieu,<br>la liberté d'un chez-soi</h2>
+        <p>Un lobby de 10 à 12 mètres sous plafond ouvert sur la piscine, 57 chambres et suites de 40 à 120 m², une conciergerie disponible 24h/24 et 7j/7.</p>
+      </div>
+    </div>
+
+    <div class="bento">
+      <figure class="tile t1 img-rv rv"><img src="img/lobby.jpg" alt="" loading="lazy"><figcaption><b>Le lobby principal</b><small>10 à 12 m sous plafond · vue sur la piscine</small></figcaption></figure>
+      <figure class="tile t2 img-rv rv"><img src="img/entree.jpg" alt="" loading="lazy"><figcaption><b>Entrée principale</b><small>Accès hôtel &amp; villas</small></figcaption></figure>
+      <figure class="tile t3 img-rv rv"><img src="img/reception.jpg" alt="" loading="lazy"><figcaption><b>Réception</b><small>6 postes d'accueil</small></figcaption></figure>
+      <figure class="tile t4 img-rv rv"><img src="img/salons.jpg" alt="" loading="lazy"><figcaption><b>Salons</b><small>Attente &amp; détente</small></figcaption></figure>
+      <figure class="tile t5 img-rv rv"><img src="img/bar-lounge.jpg" alt="" loading="lazy"><figcaption><b>Bar lounge</b><small>80 places</small></figcaption></figure>
+      <figure class="tile t6 img-rv rv"><img src="img/resto-hotel.jpg" alt="" loading="lazy"><figcaption><b>Restaurant</b><small>150 couverts</small></figcaption></figure>
+      <figure class="tile t7 img-rv rv"><img src="img/chambre.jpg" alt="" loading="lazy"><figcaption><b>Chambre Deluxe</b><small>40 m² · vue jardin ou piscine</small></figcaption></figure>
+      <figure class="tile t8 img-rv rv"><img src="img/suite.jpg" alt="" loading="lazy"><figcaption><b>Suite</b><small>70 m² · salon séparé · terrasse privée</small></figcaption></figure>
+      <figure class="tile t9 img-rv rv"><img src="img/spa-hotel.jpg" alt="" loading="lazy"><figcaption><b>Piscine intérieure</b><small>Hammam · sauna</small></figcaption></figure>
+      <figure class="tile t10 img-rv rv"><img src="img/fitness.jpg" alt="" loading="lazy"><figcaption><b>Fitness</b><small>200 m² · vue jardin</small></figcaption></figure>
+    </div>
+
+    <div class="specs">
+      <div><b>2 salons privés</b><span>20 &amp; 50 personnes</span></div>
+      <div><b>Rooftop</b><span>Vue panoramique</span></div>
+      <div><b>100 places</b><span>Parking &amp; bornes électriques</span></div>
+      <div><b>24h/24 · 7j/7</b><span>Service conciergerie</span></div>
+    </div>
+
+    <div class="coupe">
+      <div class="rv">
+        <span class="eyebrow">Coupe verticale</span>
+        <h3 class="h-md" style="margin:16px 0 26px">Six niveaux, du sous-sol au rooftop</h3>
+        <ul class="levels" id="levels">
+          <li data-l="6"><b>Rooftop &amp; lounge</b><span>vue panoramique</span></li>
+          <li data-l="5"><b>Chambres &amp; suites</b><span>3,20 m / étage</span></li>
+          <li data-l="4"><b>Niveau réception &amp; lobby</b><span>10 – 12 m</span></li>
+          <li data-l="3"><b>Restaurant &amp; bar</b><span>6 – 7 m</span></li>
+          <li data-l="2"><b>Spa &amp; fitness</b><span>4 – 5 m</span></li>
+          <li data-l="1"><b>Sous-sol</b><span>technique &amp; personnel</span></li>
+        </ul>
+      </div>
+      <svg class="building rv" id="building" viewBox="0 0 400 340" role="img" aria-label="Coupe schématique de l'hôtel par niveaux">
+        <g fill="none" stroke="var(--line)" stroke-width="1">
+          <line x1="0" y1="290" x2="400" y2="290" stroke="var(--gold)" stroke-opacity=".6"/>
+        </g>
+        <!-- levels: bottom to top -->
+        <g id="floors"></g>
+        <polygon points="70,40 200,6 330,40" fill="none" stroke="var(--gold)" stroke-width="1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- VILLAS -->
+<section id="villas" class="villas pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">iii. Nos villas privées</span>
+      <h2 class="h-lg">Trois univers,<br>une seule émotion</h2>
+      <p>Des villas pensées comme des maisons de luxe, avec piscine privée, terrasse, salon extérieur et accès à tous les services du resort.</p>
+    </div>
+
+    <div class="v-tabs" role="tablist" aria-label="Choisir une villa">
+      <button class="v-tab" role="tab" id="tab-eden" aria-selected="true" data-v="eden">Eden<small>Élégance naturelle</small></button>
+      <button class="v-tab" role="tab" id="tab-tiffany" aria-selected="false" data-v="tiffany">Tiffany<small>Prestige &amp; harmonie</small></button>
+      <button class="v-tab" role="tab" id="tab-carolina" aria-selected="false" data-v="carolina">Carolina<small>Caractère &amp; exclusivité</small></button>
+    </div>
+
+    <div class="v-stage" role="tabpanel" aria-live="polite">
+      <div>
+        <div class="v-photo">
+          <img class="on" data-v="eden" src="img/eden.jpg" alt="Villa Eden au crépuscule, piscine et jardin">
+          <img data-v="tiffany" src="img/tiffany.jpg" alt="Villa Tiffany au crépuscule, piscine à débordement">
+          <img data-v="carolina" src="img/carolina.jpg" alt="Villa Carolina au crépuscule, jardin paysager">
+        </div>
+        <div class="v-thumbs" id="vThumbs"></div>
+      </div>
+      <div class="v-info fade-swap" id="vInfo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVEURS & SPA -->
+<section id="saveurs">
+  <div class="wrap" style="padding-bottom:clamp(40px,5vw,70px)">
+    <div class="head center rv" style="margin-bottom:0">
+      <span class="idx">iv. Gastronomie · Bien-être · Convivialité</span>
+      <h2 class="h-lg">Des expériences uniques,<br>une seule destination</h2>
+    </div>
+  </div>
+
+  <article class="exp">
+    <div class="ph img-rv rv"><img src="img/restaurant.jpg" alt="Salle du restaurant signature face au coucher de soleil" loading="lazy"><img class="chip" src="img/plat.jpg" alt="Assiette gastronomique dressée" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">Restaurant signature</span>
+      <h3 class="h-lg">Une cuisine d'exception face à l'horizon</h3>
+      <p>Une cuisine gastronomique et méditerranéenne, entre tradition et modernité, qui met à l'honneur les produits locaux. La terrasse panoramique donne sur la piscine et le domaine.</p>
+      <ul><li>Cuisine gastronomique &amp; méditerranéenne</li><li>Terrasse panoramique</li><li>Salle au design contemporain</li><li>Service personnalisé &amp; sommelier</li></ul>
+      <p class="script">Plus qu'un repas, une expérience.</p>
+    </div>
+  </article>
+
+  <article class="exp flip">
+    <div class="ph img-rv rv"><img src="img/spa.jpg" alt="Piscine intérieure du spa éclairée à la bougie" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">Spa &amp; bien-être</span>
+      <div class="big-num">1 500<small> m²</small></div>
+      <h3 class="h-md">Dédiés à votre harmonie</h3>
+      <p>Soins sur mesure, hammam traditionnel, sauna, jacuzzi, piscine intérieure chauffée et espaces de relaxation, pour rééquilibrer le corps et l'esprit.</p>
+      <ul><li>Soins visage &amp; corps</li><li>Hammam &amp; sauna</li><li>Piscine intérieure chauffée</li><li>Fitness &amp; yoga</li></ul>
+      <p class="script">Se reconnecter à l'essentiel.</p>
+    </div>
+  </article>
+
+  <article class="exp">
+    <div class="ph img-rv rv"><img src="img/bar.jpg" alt="Bar de luxe ouvert sur les palmiers au coucher du soleil" loading="lazy"><img class="chip" src="img/cocktail.jpg" alt="Cocktail signature à la lueur des bougies" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">Cafétéria &amp; bar de luxe</span>
+      <h3 class="h-lg">L'art de la pause et du partage</h3>
+      <p>Un café en journée, un apéritif au coucher du soleil ou une soirée animée : le bar est le cœur vivant du domaine.</p>
+      <ul><li>Cafétéria gourmande &amp; healthy</li><li>Bar à cocktails signature</li><li>Vins &amp; champagnes sélectionnés</li><li>Espace lounge &amp; terrasse</li></ul>
+      <p class="script">Un lieu, mille ambiances.</p>
+    </div>
+  </article>
+</section>
+
+
+<!-- GOLF -->
+<section id="golf" class="pad" style="background:linear-gradient(180deg,var(--ink),#0B130F 40%,#0B130F 60%,var(--ink))">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">v. Golf &amp; championnat</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">Des défis légendaires,<br>une nature préservée</h2>
+        <p>Un parcours de championnat de 18 trous dessiné face à l'océan, entre fairways vallonnés, lacs et greens impeccables.</p>
+      </div>
+    </div>
+    <div class="trio">
+      <article class="card rv">
+        <img src="img/golf.jpg" alt="Fairway bordé de palmiers face à l'océan au coucher du soleil" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Parcours de championnat</span>
+          <h3 class="h-md">18 trous de légende</h3>
+          <p>Pensé pour les passionnés comme pour les joueurs exigeants : chaque trou allie technicité et panorama sur la mer.</p>
+          <div class="strip" style="grid-template-columns:1fr 1fr"><img src="img/golfeur.jpg" alt="Golfeur au départ face à l'océan" loading="lazy"><img src="img/golf-lacs.jpg" alt="Lacs et fairways vus du ciel" loading="lazy"></div>
+        </div>
+      </article>
+      <article class="card rv">
+        <img src="img/golf-green.jpg" alt="Green et drapeau rouge au bord d'un lac" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Practice &amp; académie</span>
+          <h3 class="h-md">Progresser au bord de l'eau</h3>
+          <p>Practice, académie de golf, caddies et voiturettes à disposition.</p>
+          <div class="tags"><span>Caddies</span><span>Voiturettes</span><span>Académie</span></div>
+        </div>
+      </article>
+      <article class="card rv">
+        <img src="img/clubhouse.jpg" alt="Club house illuminé au crépuscule avec voiturettes de golf" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Club house</span>
+          <h3 class="h-md">Le Club House</h3>
+          <p>Terrasse face au 18<sup>e</sup>, bar, pro shop et vestiaires, pour prolonger la partie en toute convivialité.</p>
+          <div class="tags"><span>Terrasse</span><span>Bar</span><span>Pro shop</span></div>
+        </div>
+      </article>
+    </div>
+    <div class="golf-stats rv">
+      <div><b>18 trous</b><span>Parcours signature</span></div>
+      <div><b>Practice</b><span>&amp; académie de golf</span></div>
+      <div><b>Caddies</b><span>&amp; voiturettes</span></div>
+      <div><b>Club house</b><span>&amp; pro shop</span></div>
+    </div>
+    <p class="script" style="margin-top:28px">L'exigence du jeu, la beauté du paysage.</p>
+  </div>
+</section>
+
+<!-- LOISIRS -->
+<section id="loisirs" class="pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">vi. Loisirs</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">L'esprit du jeu,<br>la douceur en famille</h2>
+        <p>Des courts de padel face à l'océan pour les joueurs, un parc pédagogique et une ferme pour les plus jeunes.</p>
+      </div>
+    </div>
+    <div class="twin">
+      <article class="card rv">
+        <img src="img/padel.jpg" alt="Courts de padel panoramiques au coucher du soleil face à l'océan" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Le complexe padel</span>
+          <h3 class="h-md">Les courts de padel</h3>
+          <p>Courts panoramiques en matériaux haut de gamme, éclairage optimal, location de matériel, stages et tournois. Après le match, le Padel Lounge prend le relais.</p>
+          <div class="tags"><span>Courts panoramiques</span><span>Entraînements &amp; stages</span><span>Tournois</span><span>Club house &amp; bar</span></div>
+          <div class="strip"><img src="img/padel-2.jpg" alt="Match en soirée" loading="lazy"><img src="img/padel-lounge.jpg" alt="Terrasse du Padel Lounge" loading="lazy"><img src="img/padel-aerial.jpg" alt="Complexe padel vu du ciel" loading="lazy"></div>
+        </div>
+      </article>
+      <article class="card rv">
+        <img src="img/parc.jpg" alt="Parc pédagogique avec moutons, alpagas et étang au coucher du soleil" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Biodiversité · Ferme &amp; prairie</span>
+          <h3 class="h-md">Le parc pédagogique</h3>
+          <p>Ateliers de soins aux animaux, collecte des œufs, potager pédagogique et hôtel à insectes. Chaque enfant repart avec son passeport de petit fermier.</p>
+          <div class="tags"><span>Animaux de la prairie</span><span>Ateliers de la ferme</span><span>Potager</span><span>Passeport petit fermier</span></div>
+          <div class="strip"><img src="img/alpaga.jpg" alt="Enfant nourrissant un alpaga" loading="lazy"><img src="img/ateliers.jpg" alt="Atelier en famille sous le kiosque" loading="lazy"><img src="img/poussin.jpg" alt="Poussin et lapereau dans des mains" loading="lazy"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ENFANCE -->
+<section id="enfance">
+  <div class="wrap" style="padding-bottom:clamp(40px,5vw,70px)">
+    <div class="head center rv" style="margin-bottom:0">
+      <span class="idx">vii. Enfance · Le parc enchanté</span>
+      <h2 class="h-lg">L'aventure en grand,<br>l'insouciance en toute sécurité</h2>
+    </div>
+  </div>
+  <article class="exp">
+    <div class="ph img-rv rv"><img src="img/kids-parc.jpg" alt="Grand parc de jeux circulaire avec toboggans, cabanes et dômes d'escalade" loading="lazy"><img class="chip" src="img/kids-tobog.jpg" alt="Enfant souriant à la sortie d'un toboggan" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">L'éveil &amp; l'aventure</span>
+      <h3 class="h-lg">Le parc des merveilles</h3>
+      <p>Un immense parc de jeux en plein air, clos et sécurisé. Toboggans géants, cabanes perchées et parcours de motricité : les enfants explorent, grimpent et glissent en toute liberté.</p>
+      <ul><li>Toboggans géants &amp; tours</li><li>Parcours d'exploration</li><li>Espace clos &amp; sécurisé</li><li>Supervision attentive</li></ul>
+      <p class="script">Le rire en partage, des souvenirs inoubliables.</p>
+    </div>
+  </article>
+  <article class="exp flip">
+    <div class="ph img-rv rv"><img src="img/kids-jeux.jpg" alt="Enfants jouant sous les voiles d'ombrage, petit train en bois et bac à sable" loading="lazy"><img class="chip" src="img/kids-dome.jpg" alt="Enfants dans un dôme d'escalade" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">Dynamisme &amp; partage</span>
+      <h3 class="h-lg">Des jeux sans limite</h3>
+      <p>Chaque journée est une fête : animations quotidiennes, escalade dans les structures géométriques, jeux d'eau et glissades, adaptés à tous les âges.</p>
+      <ul><li>Jeux pour tous les âges</li><li>Animations quotidiennes</li><li>Socialisation &amp; partage</li><li>Espaces de fraîcheur</li></ul>
+      <p class="script">Là où chaque jeu devient une grande aventure.</p>
+    </div>
+  </article>
+  <article class="exp">
+    <div class="ph img-rv rv"><img src="img/kids-oasis.jpg" alt="Parents détendus dans un salon lounge en bord de parc" loading="lazy"></div>
+    <div class="tx rv">
+      <span class="eyebrow">Bien-être &amp; sérénité</span>
+      <h3 class="h-lg">L'oasis des familles</h3>
+      <p>Pendant que les enfants jouent, les parents profitent d'espaces lounge ombragés en lisière du parc, avec snacks et rafraîchissements servis sur place.</p>
+      <ul><li>Espaces lounge parents</li><li>Snacks &amp; rafraîchissements</li><li>Zones d'ombrage naturelles</li><li>Accès facile &amp; confort</li></ul>
+      <div class="kids-grid" style="grid-template-columns:repeat(3,1fr)"><img src="img/kids-swing.jpg" alt="Enfant sur une balançoire" loading="lazy"><img src="img/kids-foot.jpg" alt="Partie de ballon en famille" loading="lazy"><img src="img/kids-gouter.jpg" alt="Goûter d'anniversaire entre enfants" loading="lazy"></div>
+      <p class="script">Le temps s'arrête, le plaisir de voir grandir.</p>
+    </div>
+  </article>
+</section>
+
+<!-- COTE MER -->
+<section id="mer" class="mer pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">viii. Côté mer</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">L'infini de la mer,<br>le prestige de l'instant</h2>
+        <p>Une plage privée de sable fin bordée d'eaux turquoise, une promenade de boutiques d'exception et un beach club ouvert jusqu'à la nuit.</p>
+      </div>
+    </div>
+
+    <article class="shore rv">
+      <img src="img/plage.jpg" alt="Plage privée avec cabanas, parasols et ponton sur une eau turquoise" loading="lazy">
+      <div class="polaroids" aria-hidden="true"><img src="img/pieds.jpg" alt="" loading="lazy"><img src="img/plage-aerial.jpg" alt="" loading="lazy"></div>
+      <div class="in">
+        <span class="eyebrow">Détente &amp; prestige</span>
+        <h3 class="h-lg">La plage privée</h3>
+        <p>Réservée aux hôtes de Harrington &amp; Co, avec cabanas privatives, transats et un service personnalisé les pieds dans le sable. Pour les plus actifs, les activités nautiques partent du ponton.</p>
+        <div class="tags"><span>Aménagements de luxe</span><span>Cabanas privatives</span><span>Service personnalisé</span><span>Activités nautiques</span></div>
+        <p class="script">Le murmure des vagues, le raffinement absolu.</p>
+      </div>
+    </article>
+
+    <div class="twin">
+      <article class="card rv">
+        <img src="img/shopping.jpg" alt="Promenade des boutiques de luxe bordée de palmiers au coucher du soleil" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Prestige &amp; sélection</span>
+          <h3 class="h-md">Shopping de luxe</h3>
+          <p>Une promenade de boutiques en plein air : maisons prestigieuses, créateurs, bijouterie, accessoires et art de vivre, avec un personal shopper dédié.</p>
+          <div class="tags"><span>Créateurs &amp; grandes marques</span><span>Bijouterie</span><span>Personal shopper</span><span>Promenade en plein air</span></div>
+          <div class="strip" style="grid-template-columns:1fr 1fr"><img src="img/boutique.jpg" alt="Collection resort en boutique" loading="lazy"><img src="img/cocktail-mer.jpg" alt="Cocktail face à la mer" loading="lazy"></div>
+          <p class="script" style="font-size:22px">L'art du style, l'élégance du voyage.</p>
+        </div>
+      </article>
+      <article class="card rv">
+        <img src="img/beachclub.jpg" alt="Terrasse du beach club en bois face à la mer au crépuscule" loading="lazy">
+        <div class="in">
+          <span class="eyebrow">Convivialité &amp; douceur de vivre</span>
+          <h3 class="h-md">Le Beach Club &amp; Lounge</h3>
+          <p>Après la plage ou le shopping, une terrasse en bois face à la mer : cocktails signature, cuisine de la mer, espaces lounge extérieurs et soirées musicales.</p>
+          <div class="tags"><span>Cocktails signature</span><span>Restauration face à la mer</span><span>Lounge extérieur</span><span>Ambiance musicale</span></div>
+          <div class="strip" style="grid-template-columns:1fr 1fr"><img src="img/famille-plage.jpg" alt="Famille marchant sur la plage au coucher du soleil" loading="lazy"><img src="img/plage-aerial.jpg" alt="Plage privée vue du ciel" loading="lazy"></div>
+          <p class="script" style="font-size:22px">Le temps suspendu, la douceur de l'instant.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- RESIDENCES -->
+<section id="residences" class="res pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">ix. Résidences</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">Vivre Harrington &amp; Co,<br>toute l'année</h2>
+        <p>Au-delà du séjour, le domaine accueille des résidents dans des appartements de haut standing, avec leur propre centre de remise en forme. Les équipes de l'hôtel sont logées sur place.</p>
+      </div>
+    </div>
+    <div class="res-grid">
+      <article class="res-col rv">
+        <img class="main" src="img/res-gym.jpg" alt="Salle de sport lumineuse ouverte sur les jardins, tapis de course et espace yoga" loading="lazy">
+        <span class="eyebrow">Santé &amp; équilibre</span>
+        <h3 class="h-md">Le gym des résidents</h3>
+        <p>Un centre de remise en forme ultramoderne : équipements de pointe, studios de yoga et coachs personnels.</p>
+        <ul><li>Équipement de pointe<span>cardio &amp; musculation</span></li><li>Studios de yoga<span>ouverts sur le jardin</span></li><li>Formateurs personnels<span>entraînement sur mesure</span></li><li>Accès<span>24h/24</span></li></ul>
+        <div class="pair"><img src="img/res-halteres.jpg" alt="Rangée d'haltères" loading="lazy"><img src="img/fitness.jpg" alt="Salle de fitness de l'hôtel" loading="lazy"></div>
+        <p class="script" style="font-size:21px">L'excellence physique, au service de votre vitalité.</p>
+      </article>
+      <article class="res-col rv">
+        <img class="main" src="img/res-appart.jpg" alt="Séjour d'un appartement résident, canapé clair et cuisine ouverte" loading="lazy">
+        <span class="eyebrow">Vie de luxe &amp; confort</span>
+        <h3 class="h-md">Appartements de haut standing</h3>
+        <p>Des appartements spacieux et lumineux, au design raffiné, avec équipements premium et conciergerie dédiée.</p>
+        <ul><li>Design raffiné<span>matériaux nobles</span></li><li>Vue panoramique<span>jardins &amp; domaine</span></li><li>Services premium<span>au quotidien</span></li><li>Conciergerie<span>dédiée aux résidents</span></li></ul>
+        <div class="pair"><img src="img/res-cuisine.jpg" alt="Cuisine ouverte avec îlot" loading="lazy"><img src="img/res-cuisine-2.jpg" alt="Cuisine équipée aux façades blanches" loading="lazy"></div>
+        <p class="script" style="font-size:21px">Le sommet du confort résidentiel, chaque jour.</p>
+      </article>
+      <article class="res-col rv">
+        <img class="main" src="img/res-staff.jpg" alt="Résidence des équipes avec balcons et jardin commun" loading="lazy">
+        <span class="eyebrow">Bien-être des équipes</span>
+        <h3 class="h-md">L'habitat des salariés</h3>
+        <p>Notre personnel est notre priorité. Des logements modernes et entièrement équipés assurent le repos et le bien-être de nos équipes.</p>
+        <ul><li>Logements modernes<span>entièrement équipés</span></li><li>Espaces communs<span>jardin &amp; terrasses</span></li><li>Sécurité &amp; confort<span>pour bien se reposer</span></li><li>Proximité<span>des services</span></li></ul>
+        <div class="pair"><img src="img/res-chambre.jpg" alt="Chambre de logement salarié" loading="lazy"><img src="img/res-chambre-2.jpg" alt="Chambre lumineuse avec fauteuil" loading="lazy"></div>
+        <p class="script" style="font-size:21px">Le repos mérité pour ceux qui font notre hôtel.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- TENUES -->
+<section id="tenues" class="uni pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">x. L'élégance du service</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">Nos tenues<br>signature</h2>
+        <p>Le raffinement commence par le personnel. Chaque uniforme est une pièce de tailleur exclusive, conçue pour incarner l'hospitalité de luxe. Les initiales HC sont brodées avec précision, pour un style intemporel.</p>
+      </div>
+    </div>
+    <div class="uni-grid">
+      <figure class="rv"><img src="img/tenue-femme.jpg" alt="Hôtesse en blazer marine, foulard de soie et jupe plissée, tablette à la main, dans le lobby" loading="lazy"><figcaption><b>Tenue féminine</b><small>Blazer marine, foulard de soie, jupe plissée</small></figcaption></figure>
+      <figure class="rv"><img src="img/tenue-accessoires.jpg" alt="Détails brodés : blason HC, chemise monogrammée, pochette, porte-clés et maroquinerie cognac" loading="lazy"><figcaption><b>Détails signature</b><small>Blason, broderies HC, maroquinerie cognac</small></figcaption></figure>
+      <figure class="rv"><img src="img/tenue-homme.jpg" alt="Majordome en costume trois pièces gris, gilet crème et cravate bordeaux, dans le lobby" loading="lazy"><figcaption><b>Tenue masculine</b><small>Costume trois pièces, gilet crème, cravate bordeaux</small></figcaption></figure>
+    </div>
+    <div class="uni-details rv">
+      <img src="img/tenue-blason.jpg" alt="Blason HC doré épinglé sur un revers marine" loading="lazy">
+      <img src="img/tenue-chemise.jpg" alt="Col de chemise blanche brodé HC et porte-clés en cuir" loading="lazy">
+      <img src="img/tenue-maroquinerie.jpg" alt="Gants et sac en cuir cognac marqués HC" loading="lazy">
+    </div>
+    <p class="script" style="margin-top:28px">L'élégance du service, jusque dans le moindre détail.</p>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="bg" id="quoteBg"></div>
+  <div class="in wrap">
+    <svg viewBox="0 0 100 120" style="width:46px;color:var(--gold)" aria-hidden="true"><use href="#hc"/></svg>
+    <blockquote>Le luxe se vit, il ne se raconte pas.</blockquote>
+    <span class="eyebrow">Harrington &amp; Co</span>
+  </div>
+</section>
+
+<!-- MASTERPLAN -->
+<section id="masterplan" class="pad">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="idx">xi. Masterplan</span>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px">
+        <h2 class="h-lg">180 hectares<br>de possibilités</h2>
+        <p>De l'héliport à la plage privée, chaque lieu du domaine se rejoint à pied ou en voiturette.</p>
+      </div>
+    </div>
+    <div class="plan-tabs" role="group" aria-label="Choisir la vue du plan"><button type="button" aria-pressed="true" data-src="img/masterplan.jpg">Vue de nuit</button><button type="button" aria-pressed="false" data-src="img/masterplan-2.jpg">Vue au coucher du soleil</button></div>
+    <div class="plan-scroll rv" id="planScroll"><div class="plan-stage" id="planStage"><img id="planImg" src="img/masterplan.jpg" alt="Plan aérien annoté du domaine : golf 18 trous, hôtel 5 étoiles, villas privées, restaurant signature, terrains de padel, spa, parc enfants, boutiques, héliport, entrée principale et plage privée" loading="lazy"></div></div>
+    <p class="hint" style="display:block">Touchez les points dorés pour découvrir chaque lieu, et faites glisser le plan sur mobile.</p>
+    
+    <div class="legend"><button type="button" data-k="hotel">Hôtel 5 étoiles</button><button type="button" data-k="villas">Villas privées</button><button type="button" data-k="resto">Restaurant signature</button><button type="button" data-k="spa">Spa &amp; bien-être</button><button type="button" data-k="golf">Golf 18 trous</button><button type="button" data-k="padel">Padel</button><button type="button" data-k="kids">Parc enfants</button><button type="button" data-k="shop">Boutiques &amp; galerie</button><button type="button" data-k="plage">Plage privée</button><button type="button" data-k="beach">Beach club</button><button type="button" data-k="heli">Héliport</button><button type="button" data-k="entree">Entrée principale</button></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="reserver" class="pad" style="background:var(--ink-2)">
+  <div class="wrap booking">
+    <div class="rv" style="display:grid;gap:24px">
+      <span class="idx">xii. Réserver</span>
+      <h2 class="h-lg">Votre séjour,<br>sur mesure</h2>
+      <p>Indiquez vos dates et vos envies. La conciergerie construit ensuite votre séjour : transfert héliporté, table au restaurant signature, soins au spa, stage de padel.</p>
+      <div class="contact-list">
+        <div><span>Conciergerie</span><b>24h/24 · 7j/7</b></div>
+        <div><span>Arrivée</span><b>Transferts privés &amp; héliport</b></div>
+      </div>
+    </div>
+
+    <form class="form rv" id="form" novalidate>
+      <div class="field"><label for="f-in">Arrivée</label><input id="f-in" type="date" required></div>
+      <div class="field"><label for="f-out">Départ</label><input id="f-out" type="date" required></div>
+      <div class="field"><label for="f-adults">Adultes</label><select id="f-adults"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+      <div class="field"><label for="f-kids">Enfants</label><select id="f-kids"><option selected>0</option><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+      <div class="field full"><label for="f-stay">Hébergement</label>
+        <select id="f-stay">
+          <option value="Chambre Deluxe">Chambre Deluxe · 40 m²</option>
+          <option value="Suite" selected>Suite · 70 m²</option>
+          <option value="Villa Eden">Villa Eden · 280 m² · 3 chambres</option>
+          <option value="Villa Tiffany">Villa Tiffany · 330 m² · 4 chambres</option>
+          <option value="Villa Carolina">Villa Carolina · 420 m² · 5 chambres</option>
+        </select>
+      </div>
+      <div class="field full"><label for="f-note">Vos envies</label><textarea id="f-note" placeholder="Transfert héliporté, dîner face à l'océan, soins en duo…"></textarea></div>
+      <div class="actions">
+        <span class="est" id="est">Choisissez vos dates</span>
+        <button class="btn fill" type="submit">Préparer ma demande</button>
+      </div>
+      <div class="confirm" id="confirm" hidden></div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div style="display:grid;gap:18px;align-content:start">
+      <a class="brand" href="#top"><svg viewBox="0 0 100 120" style="color:var(--gold)"><use href="#hc"/></svg><span><b>Harrington &amp; Co</b><small>Private Resort &amp; Hotel</small></span></a>
+      <p class="script" style="font-size:22px">Plus qu'un hôtel,<br>une destination.</p>
+    </div>
+    <div><h4>Séjourner</h4><a href="#hotel">Chambres &amp; suites</a><a href="#villas">Villas privées</a><a href="#reserver">Réserver</a></div>
+    <div><h4>Vivre</h4><a href="#saveurs">Restaurant signature</a><a href="#saveurs">Spa &amp; bien-être</a><a href="#loisirs">Padel</a><a href="#loisirs">Parc pédagogique</a></div>
+    <div><h4>Le domaine</h4><ul><li><a href="#golf" style="padding:0">Golf 18 trous</a></li><li><a href="#enfance" style="padding:0">Parc enfants</a></li><li><a href="#mer" style="padding:0">Plage privée &amp; beach club</a></li><li><a href="#mer" style="padding:0">Shopping de luxe</a></li><li><a href="#residences" style="padding:0">Résidences</a></li><li><a href="#tenues" style="padding:0">Tenues signature</a></li><li>Héliport</li></ul></div>
+  </div>
+  <div class="baseline"><span>Harrington &amp; Co · Private Resort &amp; Hotel · ★★★★★</span><span>180 hectares · Nature · Luxe · Exclusivité</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Galerie photo">
+  <figure><img id="lbImg" alt=""></figure>
+  <div style="display:grid;gap:8px"><p id="lbCap"></p><span class="count" id="lbCount"></span></div>
+  <button class="lb-btn prev" id="lbPrev" type="button" aria-label="Photo précédente">‹</button>
+  <button class="lb-btn next" id="lbNext" type="button" aria-label="Photo suivante">›</button>
+  <button class="lb-btn close" id="lbClose" type="button" aria-label="Fermer la galerie">×</button>
+</div>
+<div class="pop" id="pop" hidden></div>
+<a class="btn fill fab" id="fab" href="#reserver">Réserver</a>
+
+<script>
+document.documentElement.classList.add('js');
+/* failsafes: never leave the page hidden */
+const curtain=document.querySelector('.curtain');
+curtain.addEventListener('animationend',e=>{if(e.animationName==='lift')curtain.classList.add('gone')});
+setTimeout(()=>curtain.classList.add('gone'),3200);
+setTimeout(()=>document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')),4000);
+
+/* nav + progress + parallax */
+const nav=document.getElementById('nav'),prog=document.getElementById('progress'),
+      heroBg=document.getElementById('heroBg'),quoteBg=document.getElementById('quoteBg');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function onScroll(){
+  const y=scrollY,h=document.documentElement.scrollHeight-innerHeight;
+  nav.classList.toggle('solid',y>60);
+  prog.style.width=(h>0?y/h*100:0)+'%';
+  if(reduce)return;
+  if(y<innerHeight*1.2) heroBg.style.translate='0 '+(y*.28)+'px';
+  const r=quoteBg.parentElement.getBoundingClientRect();
+  if(r.bottom>0&&r.top<innerHeight) quoteBg.style.transform='translateY('+((r.top+r.height/2-innerHeight/2)*-.18)+'px)';
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+/* mobile menu */
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded',false);document.body.style.overflow=''}));
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* count up */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;cio.unobserve(e.target);
+  const el=e.target,end=+el.dataset.count,sp=el.dataset.fmt==='space';if(reduce)return;
+  const t0=performance.now(),d=1800,final=el.textContent;setTimeout(()=>el.textContent=final,d+300);
+  (function tick(t){const p=Math.min(1,(t-t0)/d),v=Math.round(end*(1-Math.pow(1-p,4)));
+    el.textContent=sp?v.toLocaleString('fr-FR').replace(/ | /g,' '):v;if(p<1)requestAnimationFrame(tick)})(t0);
+}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* building section */
+const floors=[ // bottom → top: y, h, level
+  {l:1,y:290,h:28,label:'Sous-sol'},
+  {l:2,y:244,h:46},{l:3,y:190,h:54},{l:4,y:118,h:72},
+  {l:5,y:62,h:56},{l:6,y:40,h:22}];
+const g=document.getElementById('floors');let svg='';
+floors.forEach(f=>{
+  const x=f.l===6?100:70,w=f.l===6?200:260;
+  svg+=`<g data-l="${f.l}"><rect x="${x}" y="${f.y}" width="${w}" height="${f.h}" fill="rgba(201,165,111,.05)" stroke="rgba(201,165,111,.45)"/>`;
+  if(f.l>=2&&f.l<=5){const n=f.l===5?2:1;for(let r=0;r<n;r++){const ry=f.y+(f.h/n)*r;
+    for(let i=0;i<7;i++){svg+=`<rect x="${x+14+i*35}" y="${ry+8}" width="22" height="${f.h/n-16}" fill="#E3CBA0" fill-opacity=".18" class="win"/>`}}}
+  if(f.l===6)svg+=`<line x1="${x+20}" y1="${f.y+11}" x2="${x+w-20}" y2="${f.y+11}" stroke="#E3CBA0" stroke-opacity=".5" stroke-dasharray="2 5"/>`;
+  svg+=`</g>`;
+});
+g.innerHTML=svg;
+const levelItems=[...document.querySelectorAll('#levels li')];
+function hl(l){
+  levelItems.forEach(li=>li.classList.toggle('on',li.dataset.l==l));
+  g.querySelectorAll(':scope>g').forEach(x=>{const on=x.dataset.l==l;
+    x.querySelector('rect').setAttribute('fill',on?'rgba(201,165,111,.22)':'rgba(201,165,111,.05)');
+    x.querySelectorAll('.win').forEach(w=>w.setAttribute('fill-opacity',on?'.75':'.18'))});
+}
+levelItems.forEach(li=>{li.addEventListener('mouseenter',()=>hl(li.dataset.l));li.tabIndex=0;li.addEventListener('focus',()=>hl(li.dataset.l))});
+g.querySelectorAll(':scope>g').forEach(x=>x.addEventListener('mouseenter',()=>hl(x.dataset.l)));
+hl(4);
+
+/* villas */
+const V={
+  eden:{name:'Villa Eden',sub:'Élégance naturelle & intimiste',surf:280,ch:3,jar:'1 200',
+    txt:"Un havre de paix au cœur de jardins luxuriants. Son architecture épurée s'intègre au paysage. Idéale pour les couples ou les petites familles, elle invite à la détente et à la reconnexion avec l'essentiel.",
+    q:'Un écrin de nature, une intimité totale.',th:['eden-1','eden-2','eden-3']},
+  tiffany:{name:'Villa Tiffany',sub:'Prestige & harmonie',surf:330,ch:4,jar:'1 800',
+    txt:"L'équilibre entre modernité et élégance intemporelle. Volumes généreux, matériaux nobles et espaces de vie ouverts. Conçue pour les familles ou les séjours entre amis.",
+    q:"Le luxe d'espace, la liberté d'un horizon.",th:['tif-1','tif-2','tif-3']},
+  carolina:{name:'Villa Carolina',sub:'Caractère & exclusivité',surf:420,ch:5,jar:'2 500',
+    txt:"Un style affirmé et une atmosphère confidentielle. Espaces de vie élégants, piscine à débordement et jardin paysager, entre sophistication et confort absolu.",
+    q:"L'élégance d'une maison, le service d'un palace.",th:['car-1','car-2','car-3']}
+};
+const thLabels=['Séjour','Suite parentale','Terrasse'];
+const vInfo=document.getElementById('vInfo'),vThumbs=document.getElementById('vThumbs');
+function renderVilla(k,first){
+  const v=V[k];
+  document.querySelectorAll('.v-tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.v===k));
+  document.querySelectorAll('.v-photo img').forEach(i=>i.classList.toggle('on',i.dataset.v===k));
+  const paint=()=>{
+    vInfo.innerHTML=`<span class="kicker">Villa privée</span>
+      <h3 class="h-lg">${v.name}</h3>
+      <p class="script" style="font-size:20px;margin-top:-10px">${v.sub}</p>
+      <p>${v.txt}</p>
+      <div class="v-data">
+        <div><span>Surface</span><b>${v.surf} m<sup>2</sup></b></div>
+        <div><span>Chambres</span><b>${v.ch} <small>dont une suite parentale</small></b></div>
+        <div><span>Jardin privé</span><b>${v.jar} m<sup>2</sup></b></div>
+        <div><span>Piscine privée</span><b>Oui</b></div>
+        <div><span>Terrasse &amp; salon ext.</span><b>Oui</b></div>
+        <div><span>Services hôteliers</span><b><small>Accès au resort</small></b></div>
+      </div>
+      <p class="script">${v.q}</p>
+      <div><a class="btn" href="#reserver" data-pick="${v.name}">Demander ${v.name}</a></div>`;
+    vThumbs.innerHTML=v.th.map((t,i)=>`<button type="button" data-src="img/${t}.jpg" data-cap="${v.name} · ${thLabels[i]}" aria-label="Agrandir : ${thLabels[i]}"><img src="img/${t}.jpg" alt="${v.name}, ${thLabels[i].toLowerCase()}"></button>`).join('');
+    vInfo.classList.remove('out');
+  };
+  if(first){paint();return}
+  vInfo.classList.add('out');setTimeout(paint,reduce?0:300);
+}
+document.querySelectorAll('.v-tab').forEach(t=>t.addEventListener('click',()=>renderVilla(t.dataset.v)));
+renderVilla('eden',true);
+vInfo.addEventListener('click',e=>{const a=e.target.closest('[data-pick]');if(!a)return;
+  document.getElementById('f-stay').value=a.dataset.pick;updateEst()});
+
+/* lightbox */
+const lb=document.getElementById('lb'),lbImg=document.getElementById('lbImg'),lbCap=document.getElementById('lbCap');
+lb.hidden=true;
+const ZOOM='.uni-grid img,.uni-details img,.res-col img,.tile img,.strip img,.exp .ph img,.kids-grid img,.v-thumbs img,.domaine .visual img,.v-photo img.on';
+let gal=[],gi=0,lastFocus=null;
+function capOf(img){const f=img.closest('.tile');if(f)return f.querySelector('b').textContent+' · '+f.querySelector('small').textContent;return img.alt||''}
+function showLb(){const im=gal[gi];lbImg.src=im.currentSrc||im.src;lbImg.alt=capOf(im);lbCap.textContent=capOf(im);document.getElementById('lbCount').textContent=(gi+1)+' / '+gal.length}
+function openFrom(img){gal=[...document.querySelectorAll(ZOOM)];gi=Math.max(0,gal.indexOf(img));lastFocus=document.activeElement;showLb();lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbClose').focus()}
+function closeLb(){lb.hidden=true;document.body.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus()}
+function step(d){gi=(gi+d+gal.length)%gal.length;showLb()}
+function markZoom(){document.querySelectorAll(ZOOM).forEach(i=>i.classList.add('zoomable'))}
+markZoom();new MutationObserver(markZoom).observe(vThumbs,{childList:true});
+document.addEventListener('click',e=>{const img=e.target.closest('img');
+  if(img&&img.matches(ZOOM)){e.preventDefault();openFrom(img);return}
+  const tile=e.target.closest('.tile');if(tile)openFrom(tile.querySelector('img'))});
+document.getElementById('lbPrev').addEventListener('click',e=>{e.stopPropagation();step(-1)});
+document.getElementById('lbNext').addEventListener('click',e=>{e.stopPropagation();step(1)});
+document.getElementById('lbClose').addEventListener('click',e=>{e.stopPropagation();closeLb()});
+lb.addEventListener('click',e=>{if(e.target===lb||e.target.tagName==='FIGURE')closeLb()});
+addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+let tx=null;lb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',e=>{if(tx===null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1);tx=null});
+
+/* booking */
+const fIn=document.getElementById('f-in'),fOut=document.getElementById('f-out'),est=document.getElementById('est');
+const iso=d=>d.toISOString().slice(0,10);
+const today=new Date();const a=new Date(today);a.setDate(a.getDate()+30);const b=new Date(a);b.setDate(b.getDate()+5);
+fIn.min=iso(today);fIn.value=iso(a);fOut.value=iso(b);
+function nights(){const n=(new Date(fOut.value)-new Date(fIn.value))/864e5;return Number.isFinite(n)?Math.round(n):NaN}
+function updateEst(){
+  const n=nights(),st=document.getElementById('f-stay').value;
+  if(!(n>0)){est.textContent='Le départ doit suivre l’arrivée';return}
+  est.textContent=`${n} nuit${n>1?'s':''} · ${st}`;
+}
+['change','input'].forEach(ev=>document.getElementById('form').addEventListener(ev,()=>{fOut.min=fIn.value;updateEst()}));
+updateEst();
+document.getElementById('form').addEventListener('submit',e=>{
+  e.preventDefault();const n=nights();const c=document.getElementById('confirm');
+  if(!(n>0)){est.textContent='Vérifiez vos dates : le départ doit suivre l’arrivée';fOut.focus();return}
+  const fmt=v=>new Date(v).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+  const ad=document.getElementById('f-adults').value,ki=+document.getElementById('f-kids').value;
+  const note=document.getElementById('f-note').value.trim();
+  c.innerHTML=`<h3>Récapitulatif de votre demande</h3>
+    <p>${document.getElementById('f-stay').value} · du ${fmt(fIn.value)} au ${fmt(fOut.value)} · ${n} nuit${n>1?'s':''}</p>
+    <p>${ad} adulte${ad>1?'s':''}${ki?` et ${ki} enfant${ki>1?'s':''}`:''}${note?` · « ${note.replace(/[<>&]/g,'')} »`:''}</p>
+    <p style="font-size:13px;color:var(--mist)">Aperçu de démonstration : cette page n'envoie pas encore la demande. Branchez le formulaire à votre système de réservation pour la transmettre à la conciergerie.</p>`;
+  c.hidden=false;c.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+});
+
+/* quick booking bar */
+const qbIn=document.getElementById('qb-in'),qbOut=document.getElementById('qb-out'),qbG=document.getElementById('qb-guests');
+qbIn.min=fIn.min;qbIn.value=fIn.value;qbOut.value=fOut.value;qbOut.min=qbIn.value;
+qbIn.addEventListener('change',()=>{qbOut.min=qbIn.value;if(qbOut.value<=qbIn.value){const d=new Date(qbIn.value);d.setDate(d.getDate()+3);qbOut.value=iso(d)}});
+document.getElementById('qb').addEventListener('submit',e=>{e.preventDefault();
+  fIn.value=qbIn.value;fOut.value=qbOut.value;fOut.min=fIn.value;document.getElementById('f-adults').value=qbG.value;updateEst();
+  document.getElementById('reserver').scrollIntoView({behavior:reduce?'auto':'smooth'});
+  setTimeout(()=>document.getElementById('f-stay').focus({preventScroll:true}),reduce?0:900)});
+
+/* scrollspy + floating button */
+const navLinks=[...document.querySelectorAll('.links a')],fab=document.getElementById('fab');
+const spySecs=[...document.querySelectorAll('main section[id]')];
+function spy(){let cur='';const line=innerHeight*.4;for(const sec of spySecs){if(sec.getBoundingClientRect().top<=line)cur=sec.id}
+  navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur))}
+addEventListener('scroll',spy,{passive:true});addEventListener('resize',spy);spy();
+const hero=document.querySelector('.hero'),resa=document.getElementById('reserver'),foot=document.querySelector('footer');
+function fabUpdate(){const pastHero=hero.getBoundingClientRect().bottom<0,r=resa.getBoundingClientRect(),atResa=r.top<innerHeight&&r.bottom>0,atFoot=foot.getBoundingClientRect().top<innerHeight;fab.classList.toggle('show',pastHero&&!atResa&&!atFoot)}
+addEventListener('scroll',fabUpdate,{passive:true});fabUpdate();
+
+/* interactive masterplan */
+const PL={
+ golf:['Golf 18 trous','Parcours de championnat','golf.jpg','#golf'],
+ hotel:['Hôtel 5 étoiles','57 chambres & suites','lobby.jpg','#hotel'],
+ resto:['Restaurant signature','Cuisine gastronomique','restaurant.jpg','#saveurs'],
+ padel:['Terrains de padel','Courts panoramiques & lounge','padel.jpg','#loisirs'],
+ spa:['Spa & bien-être','1 500 m² de sérénité','spa.jpg','#saveurs'],
+ villas:['Villas privées','Eden · Tiffany · Carolina','eden.jpg','#villas'],
+ kids:['Parc enfants','Le parc des merveilles','kids-parc.jpg','#enfance'],
+ shop:['Boutiques & galerie','Shopping de luxe','shopping.jpg','#mer'],
+ plage:['Plage privée','Cabanas & activités nautiques','plage.jpg','#mer'],
+ beach:['Beach club','Cocktails face à la mer','beachclub.jpg','#mer'],
+ heli:['Héliport','Transferts privés','aerial-wide.jpg','#reserver'],
+ entree:['Entrée principale','Accès hôtel & villas','entree.jpg','#hotel'],
+ bassin:['Miroir d’eau central','Le cœur du domaine','aerial.jpg','#domaine']
+};
+const SPOTS={
+ 'img/masterplan.jpg':[['golf',16.3,18],['hotel',48.8,11.2],['resto',63.8,29],['padel',74.9,45.4],['spa',36.5,50.8],['villas',14.3,64.5],['kids',46.9,67.2],['shop',81.4,64.5],['plage',94.4,18],['heli',19.5,87.7],['entree',62.5,86.3],['bassin',49.5,38.5]],
+ 'img/masterplan-2.jpg':[['golf',24.4,32.4],['villas',38.1,19.7],['beach',64.9,16.2],['plage',93.3,28.9],['hotel',52.8,37],['resto',60.1,41.7],['spa',67.8,42.8],['padel',73.9,48.6],['villas',21.1,56.7],['shop',72.2,57.9],['kids',86,66],['heli',70.6,85.1],['entree',51,79.9]]
+};
+const stage=document.getElementById('planStage'),pop=document.getElementById('pop');let popFor=null;
+function drawSpots(src){stage.querySelectorAll('.hs').forEach(h=>h.remove());closePop();
+  (SPOTS[src]||[]).forEach(([k,x,y])=>{const b=document.createElement('button');b.type='button';b.className='hs';b.style.left=x+'%';b.style.top=y+'%';b.dataset.k=k;b.setAttribute('aria-label',PL[k][0]);stage.appendChild(b)})}
+function openPop(btn){const d=PL[btn.dataset.k];popFor=btn;stage.querySelectorAll('.hs').forEach(h=>h.classList.toggle('on',h===btn));
+  pop.innerHTML=`<img src="img/${d[2]}" alt=""><div><b>${d[0]}</b><small>${d[1]}</small><a href="${d[3]}">Découvrir →</a></div>`;pop.hidden=false;placePop()}
+function placePop(){if(!popFor||pop.hidden)return;const r=popFor.getBoundingClientRect(),w=pop.offsetWidth,h=pop.offsetHeight;
+  let x=r.left+r.width/2-w/2,y=r.top-h-12;if(y<70)y=r.bottom+12;x=Math.max(12,Math.min(innerWidth-w-12,x));pop.style.left=x+'px';pop.style.top=y+'px'}
+function closePop(){pop.hidden=true;popFor=null;stage.querySelectorAll('.hs.on').forEach(h=>h.classList.remove('on'))}
+stage.addEventListener('click',e=>{const b=e.target.closest('.hs');if(b){e.stopPropagation();popFor===b?closePop():openPop(b)}});
+stage.addEventListener('mouseover',e=>{const b=e.target.closest('.hs');if(b&&matchMedia('(hover:hover)').matches)openPop(b)});
+stage.addEventListener('focusin',e=>{const b=e.target.closest('.hs');if(b)openPop(b)});
+document.addEventListener('click',e=>{if(!pop.hidden&&!pop.contains(e.target)&&!e.target.closest('.hs'))closePop()});
+pop.addEventListener('click',e=>{if(e.target.closest('a'))closePop()});
+addEventListener('scroll',()=>{if(!pop.hidden)placePop()},{passive:true});
+document.getElementById('planScroll').addEventListener('scroll',placePop,{passive:true});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden)closePop()});
+drawSpots('img/masterplan.jpg');
+document.querySelector('.legend').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;e.stopPropagation();
+  const h=stage.querySelector('.hs[data-k="'+b.dataset.k+'"]');if(!h)return;
+  const sc=document.getElementById('planScroll');sc.scrollLeft=h.offsetLeft-sc.clientWidth/2;
+  const r=sc.getBoundingClientRect();if(r.top<80||r.bottom>innerHeight)sc.scrollIntoView({block:'center',behavior:reduce?'auto':'smooth'});
+  setTimeout(()=>openPop(h),reduce?0:450)});
+</script>
